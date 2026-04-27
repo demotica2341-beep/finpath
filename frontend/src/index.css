@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg-main: #eef6f2;
+  --bg-panel: rgba(255, 255, 255, 0.96);
+  --bg-muted: #f5fbf8;
+  --border-soft: #cde7dc;
+  --text-main: #15322a;
+  --text-muted: #567267;
+  --shadow-soft: 0 18px 40px rgba(15, 110, 86, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg-main: #0f1815;
+    --bg-panel: rgba(20, 31, 28, 0.98);
+    --bg-muted: #13211d;
+    --border-soft: #244439;
+    --text-main: #effaf4;
+    --text-muted: #acc7bc;
+    --shadow-soft: 0 22px 50px rgba(0, 0, 0, 0.42);
+  }
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(29, 158, 117, 0.12), transparent 36%),
+    linear-gradient(180deg, var(--bg-main) 0%, #f3f7f5 100%);
+  color: var(--text-main);
+  font-family: "DM Sans", "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background:
+      radial-gradient(circle at top, rgba(29, 158, 117, 0.18), transparent 34%),
+      linear-gradient(180deg, #0f1815 0%, #12201b 100%);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+[role='button'] {
+  cursor: pointer;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none;
+}
