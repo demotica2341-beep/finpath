@@ -111,9 +111,3 @@ For deployment, set these environment variables in the hosting dashboard:
 GEMINI_API_KEY=your-production-gemini-key
 GEMINI_MODEL=gemini-2.5-flash
 ```
-
-Recommended deployment target: Render, because the project already includes `render.yaml` for a full-stack Node deployment.
-
-## Pitch Line
-
-FinPath is not replacing a financial advisor. It is becoming the first financial guide Priya ever had.
