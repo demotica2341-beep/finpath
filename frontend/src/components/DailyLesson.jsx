@@ -94,7 +94,7 @@ export default function DailyLesson({ lang }) {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-[28px] border border-brand-primary/10 bg-[var(--bg-muted)] p-4 shadow-sm">
+      <div className="rounded-lg border border-brand-primary/10 bg-[var(--bg-muted)] p-4 shadow-sm">
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="text-[11px] font-semibold uppercase tracking-wide text-brand-dark">
@@ -116,7 +116,7 @@ export default function DailyLesson({ lang }) {
         </div>
       </div>
 
-      <div className="rounded-[30px] border border-brand-primary/10 bg-[var(--bg-panel)] p-4 shadow-sm">
+      <div className="rounded-lg border border-brand-primary/10 bg-[var(--bg-panel)] p-4 shadow-sm lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.85fr)] lg:gap-6">
         <div className="space-y-3 text-[13px] leading-6 text-[var(--text-main)]">
           <p className="m-0">{lesson.body}</p>
           <div className="rounded-2xl bg-brand-light/70 px-3 py-3 text-brand-dark">
@@ -125,7 +125,7 @@ export default function DailyLesson({ lang }) {
           </div>
         </div>
 
-        <div className="mt-5">
+        <div className="mt-5 lg:mt-0">
           <div className="text-sm font-semibold text-[var(--text-main)]">{lesson.question}</div>
           <div className="mt-3 space-y-2">
             {lesson.options.map((option, index) => {
@@ -168,7 +168,7 @@ export default function DailyLesson({ lang }) {
         ) : null}
       </div>
 
-      <div className="rounded-[28px] border border-brand-primary/10 bg-[var(--bg-panel)] p-4 shadow-sm">
+      <div className="rounded-lg border border-brand-primary/10 bg-[var(--bg-panel)] p-4 shadow-sm">
         <div className="flex items-center justify-between gap-3">
           <div>
             <div className="text-sm font-semibold text-[var(--text-main)]">

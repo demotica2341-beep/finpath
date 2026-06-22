@@ -3,7 +3,7 @@ import { SCHEMES } from '../data/schemes';
 export default function Schemes({ lang, onLearnMore }) {
   return (
     <div className="space-y-4">
-      <div className="rounded-[28px] border border-brand-primary/10 bg-[var(--bg-muted)] p-4 shadow-sm">
+      <div className="rounded-lg border border-brand-primary/10 bg-[var(--bg-muted)] p-4 shadow-sm">
         <h2 className="m-0 text-base font-semibold text-[var(--text-main)]">
           {lang === 'hi' ? 'सरकारी योजनाएँ' : 'Government schemes'}
         </h2>
@@ -14,11 +14,11 @@ export default function Schemes({ lang, onLearnMore }) {
         </p>
       </div>
 
-      <div className="space-y-3">
+      <div className="grid gap-3 md:grid-cols-2">
         {SCHEMES.map((scheme) => (
           <article
             key={scheme.id}
-            className="rounded-[28px] border border-brand-primary/10 bg-[var(--bg-panel)] p-4 shadow-sm"
+            className="flex min-h-[260px] flex-col rounded-lg border border-brand-primary/10 bg-[var(--bg-panel)] p-4 shadow-sm"
           >
             <div className="inline-flex rounded-full bg-brand-light px-3 py-1 text-[11px] font-semibold text-brand-dark">
               {scheme.name}
@@ -42,11 +42,11 @@ export default function Schemes({ lang, onLearnMore }) {
               </div>
             </div>
 
-            <div className="mt-4 flex items-center gap-3">
+            <div className="mt-auto flex items-center gap-3 pt-4">
               <button
                 type="button"
                 onClick={() => onLearnMore(scheme.name)}
-                className="rounded-2xl bg-brand-primary px-4 py-2.5 text-[12px] font-semibold text-white transition hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
+                className="rounded-lg bg-brand-primary px-4 py-2.5 text-[12px] font-semibold text-white transition hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
               >
                 {lang === 'hi' ? 'रिया से पूछें' : 'Learn more'}
               </button>

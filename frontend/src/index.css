@@ -5,6 +5,7 @@
 :root {
   color-scheme: light;
   --bg-main: #eef6f2;
+  --bg-main-soft: #f6fbf8;
   --bg-panel: rgba(255, 255, 255, 0.96);
   --bg-muted: #f5fbf8;
   --border-soft: #cde7dc;
@@ -17,6 +18,7 @@
   :root {
     color-scheme: dark;
     --bg-main: #0f1815;
+    --bg-main-soft: #111d19;
     --bg-panel: rgba(20, 31, 28, 0.98);
     --bg-muted: #13211d;
     --border-soft: #244439;

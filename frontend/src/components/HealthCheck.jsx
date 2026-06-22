@@ -88,7 +88,7 @@ export default function HealthCheck({ lang }) {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-[28px] border border-brand-primary/10 bg-[var(--bg-muted)] p-4 shadow-sm">
+      <div className="rounded-lg border border-brand-primary/10 bg-[var(--bg-muted)] p-4 shadow-sm">
         <div className="flex items-center justify-between gap-3">
           <div>
             <h2 className="m-0 text-base font-semibold text-[var(--text-main)]">
@@ -110,7 +110,8 @@ export default function HealthCheck({ lang }) {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-3">
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
+      <form onSubmit={handleSubmit} className="space-y-3 rounded-lg border border-[var(--border-soft)] bg-[var(--bg-panel)] p-4 shadow-sm">
         {[
           ['income', lang === 'hi' ? 'मासिक आमदनी' : 'Monthly income'],
           ['rent', lang === 'hi' ? 'किराया' : 'Rent'],
@@ -124,7 +125,7 @@ export default function HealthCheck({ lang }) {
               inputMode="numeric"
               value={form[key]}
               onChange={(event) => setForm({ ...form, [key]: event.target.value })}
-              className="w-full rounded-2xl border border-[var(--border-soft)] bg-[var(--bg-panel)] px-4 py-3 text-sm text-[var(--text-main)] shadow-sm transition focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
+              className="w-full rounded-lg border border-[var(--border-soft)] bg-[var(--bg-panel)] px-4 py-3 text-sm text-[var(--text-main)] shadow-sm transition focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
               placeholder="0"
             />
           </label>
@@ -132,14 +133,14 @@ export default function HealthCheck({ lang }) {
 
         <button
           type="submit"
-          className="w-full rounded-2xl bg-brand-primary px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
+          className="w-full rounded-lg bg-brand-primary px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-primary/40"
         >
           {lang === 'hi' ? 'जांच करें' : 'Check health'}
         </button>
       </form>
 
       {result ? (
-        <div className="space-y-4 rounded-[30px] border border-brand-primary/10 bg-[var(--bg-panel)] p-4 shadow-sm">
+        <div className="space-y-4 rounded-lg border border-brand-primary/10 bg-[var(--bg-panel)] p-4 shadow-sm">
           <div className="grid grid-cols-2 gap-3">
             <div className="rounded-2xl bg-brand-light p-3">
               <div className="text-[11px] font-medium text-brand-dark">
@@ -205,7 +206,14 @@ export default function HealthCheck({ lang }) {
             )}
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div className="flex min-h-[320px] items-center rounded-lg border border-dashed border-brand-primary/25 bg-brand-light/40 p-6 text-[13px] leading-6 text-brand-dark">
+          {lang === 'hi'
+            ? 'Priya demo भरकर देखें कि बचत, खर्च और Riya की सलाह desktop पर साथ-साथ कैसे दिखती है।'
+            : 'Fill the Priya demo to see savings, expense split, and Riya advice side by side on desktop.'}
+        </div>
+      )}
+      </div>
     </div>
   );
 }
