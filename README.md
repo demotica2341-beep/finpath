@@ -1,71 +1,119 @@
 # FinPath
 
-FinPath is a mobile-first web app for first-time earners and rural workers in India. It combines a warm AI coach named Riya with simple financial tools for saving, loans, daily lessons, and government scheme discovery.
+FinPath is an AI-powered financial literacy coach for first-time earners, gig workers, factory workers, domestic workers, and rural workers in India. The app is built around **Riya**, a warm and non-judgmental money coach who explains savings, loans, insurance, and government schemes in simple English or Hindi.
 
-## Stack
+The goal is simple: help users earning around Rs 10,000 to Rs 30,000 per month understand one better money decision at a time.
 
-- Frontend: React 18 + Vite + Tailwind CSS
-- Backend: Node.js + Express
-- AI: Google Gemini API (`gemini-2.5-flash` by default)
-- Storage: in-memory chat + `localStorage` for lesson streaks and points
+## Why FinPath
 
-## Features
+Many first-time earners have income but no trusted financial guidance. FinPath gives them a friendly place to ask questions, calculate EMI and savings, learn small daily lessons, and discover useful Indian government schemes without complex jargon.
 
-- Chat with Riya in English or Hindi with last-10-message context
-- Financial Health Check with savings amount, savings rate, breakdown bar, and AI guidance
-- Loan Simulator with EMI, total repayment, total interest, and income ratio warning state
-- Daily micro-lessons with 8 hardcoded lessons, quiz feedback, streak dots, and points
-- Government schemes finder with one-tap handoff into the chat tab
-- Priya demo flow helpers on the Health and Loan tabs
+FinPath is not a stock advisor or a replacement for regulated financial advice. It is a first layer of financial education for people who may never have had one.
+
+## Core Features
+
+- **Chat with Riya:** AI coach with English and Hindi support, quick replies, and conversational memory.
+- **Financial Health Check:** Calculates savings, savings rate, expense split, and gives simple AI guidance.
+- **Loan Simulator:** Calculates EMI, total repayment, interest paid, and EMI-to-income risk.
+- **Daily Micro-Lessons:** Short financial lessons with quizzes, streaks, and points.
+- **Government Schemes Finder:** Explains schemes like Jan Dhan, APY, PMJJBY, PMSBY, Mudra, PM Awas, and Sukanya Samriddhi.
+- **Hackathon Demo Flow:** Includes Priya demo helpers for quick presentation walkthroughs.
+- **Responsive UI:** Mobile-friendly for users and desktop-friendly for hackathon judging, demos, and admin-style viewing.
+
+## Tech Stack
+
+- **Frontend:** React 18, Vite, Tailwind CSS
+- **Backend:** Node.js, Express
+- **AI:** Google Gemini API, default model `gemini-2.5-flash`
+- **Storage:** Browser `localStorage` for lessons, streaks, points, and lightweight chat state
+- **Deployment:** Single Node service serving the built frontend and same-origin API routes
+
+## Project Structure
+
+```text
+finpath/
+|-- backend/
+|   |-- routes/
+|   |   `-- chat.js
+|   `-- server.js
+|-- frontend/
+|   |-- src/
+|   |   |-- components/
+|   |   |-- data/
+|   |   |-- hooks/
+|   |   |-- utils/
+|   |   `-- App.jsx
+|   `-- index.html
+|-- package.json
+|-- render.yaml
+`-- README.md
+```
 
 ## Setup
 
-1. Create `backend/.env` from `backend/.env.example`
-2. Add your Gemini API key:
+Create `backend/.env` from `backend/.env.example` and add your Gemini API key:
 
 ```env
 GEMINI_API_KEY=your-gemini-api-key
 GEMINI_MODEL=gemini-2.5-flash
 ```
 
-3. Install and run:
+Install dependencies:
 
 ```bash
 npm install
-npm run dev
+```
 
-For a production-style local run:
+Run the full local development app:
+
+```bash
+npm run dev
+```
+
+Build and run the production-style app locally:
 
 ```bash
 npm run build
 npm start
 ```
+
+## Demo Scenario
+
+Use Priya as the main story during a hackathon presentation:
+
+> Priya is 24, works at a garment factory in Indore, earns Rs 18,000 per month, and does not understand EMI or formal savings.
+
+Suggested demo flow:
+
+1. Open chat, switch to Hindi, and ask Riya what EMI means.
+2. Use Health Check with Priya's income and expenses to show savings rate.
+3. Use Loan Simulator for a Rs 50,000 education loan at 14% for 18 months.
+4. Complete one Daily Lesson quiz to show points and streaks.
+5. Open Government Schemes and ask Riya about PM Jeevan Jyoti Bima.
+
+## AI Safety
+
+Riya is designed to:
+
+- explain financial terms in simple language
+- avoid specific stock, crypto, or forex recommendations
+- avoid asking for Aadhaar, PAN, or sensitive identity details
+- keep replies short, warm, and action-oriented
+- give educational guidance instead of regulated investment advice
+
+## Deployment
+
+FinPath can run as a single Node web service. The Express backend serves the built React frontend from `frontend/dist`, and the frontend calls `/api/chat` on the same origin.
+
+For deployment, set these environment variables in the hosting dashboard:
+
+```env
+GEMINI_API_KEY=your-production-gemini-key
+GEMINI_MODEL=gemini-2.5-flash
 ```
 
-## Local URLs
+Recommended deployment target: Render, because the project already includes `render.yaml` for a full-stack Node deployment.
 
-- Frontend: `http://127.0.0.1:5173`
-- Backend health check: `http://127.0.0.1:3001/api/health`
-- Production-style app after `npm start`: `http://127.0.0.1:3001`
+## Pitch Line
 
-## Demo story
-
-Use this hackathon story:
-
-> This is Priya. She is 24, works at a garment factory in Indore, earns Rs 18,000/month.
-> She has never had a savings account and does not understand what an EMI is.
-
-Suggested flow:
-
-1. Switch to Hindi and ask `EMI kya hoti hai?`
-2. Health Check: income `18000`, rent `6000`, food `4000`, transport `2000`, other `3000`
-3. Loan Simulator: amount `50000`, rate `14`, months `18`, income `18000`
-4. Open the Daily Lesson tab and answer the first quiz
-5. Open Schemes and tap PM Jeevan Jyoti Bima
-
-## Deployment notes
-
-- The backend serves `frontend/dist`, so FinPath can be deployed as a single Node web service.
-- In production, the app uses same-origin `/api/chat`, which avoids CORS and proxy issues.
-- If the Gemini key is missing, the UI still works and the backend returns a helpful fallback message.
-- The app is designed for a max width of 420px and feels best in a phone-sized viewport.
+FinPath is not replacing a financial advisor. It is becoming the first financial guide Priya ever had.
